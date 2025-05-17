@@ -31,12 +31,12 @@ class Scoreboard:
         self.spacecrafts = Group()
         for spacecraft_number in range(self.stats.spacecraft_left):
             spacecraft = Spacecraft(self.game)
-            spacecraft.rect.x = 10 + spacecraft_number * spacecraft.rect.width
-            spacecraft.rect.y = 10
+            spacecraft.rect.x = spacecraft_number * spacecraft.rect.width
+            spacecraft.rect.y = 0
             self.spacecrafts.add(spacecraft)
 
     def prep_level(self):
-        level_str = f'Level: {self.stats.level}'
+        level_str = f'Level: {self.stats.level:,}'.replace(',', '.')
         self.level_image = self.font.render(
             level_str, True, self.text_color, self.settings.background_color)
 
@@ -54,7 +54,7 @@ class Scoreboard:
         self.high_score_rect.top = self.score_rect.top
 
     def prep_score(self):
-        score_str = f'score: {self.stats.score:,}'.replace(',', '.')
+        score_str = f'score: {self.stats.score}'
         self.score_image = self.font.render(
             score_str, True, self.text_color, self.settings.background_color)
 

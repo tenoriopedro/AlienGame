@@ -19,35 +19,28 @@ class Spacecraft(Sprite):
         self.image = pygame.transform.scale(
             self.image, (40, 40)
         )
+        self.image = pygame.transform.rotate(self.image, 270)
         self.rect = self.image.get_rect()
 
         # Posicionando a nave na tela do jogo
-        self.rect.midbottom = self.screen_rect.midbottom
+        self.rect.midleft = self.screen_rect.midleft
 
-        self.x = float(self.rect.x)
         self.y = float(self.rect.y)
 
         self.moving_up = False
         self.moving_down = False
-        self.moving_right = False
-        self.moving_left = False
 
     def update(self):
-        if self.moving_up and self.rect.top > 0:
+        if self.moving_up and self.rect.top > 41:
             self.y -= self.settings.spacecraft_speed
         if self.moving_down and self.rect.bottom < self.screen_rect.bottom:
             self.y += self.settings.spacecraft_speed
-        if self.moving_right and self.rect.right < self.screen_rect.right:
-            self.x += self.settings.spacecraft_speed
-        if self.moving_left and self.rect.left > 0:
-            self.x -= self.settings.spacecraft_speed
 
-        self.rect.x = self.x
         self.rect.y = self.y
 
     def blitme(self):
         self.screen.blit(self.image, self.rect)
 
     def center_spacecraft(self):
-        self.rect.midbottom = self.screen_rect.midbottom
-        self.x = float(self.rect.x)
+        self.rect.midleft = self.screen_rect.midleft
+        self.y = float(self.rect.y)

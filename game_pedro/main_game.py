@@ -6,8 +6,8 @@ from settings import Settings
 from bullets import Bullet
 from aliens import Alien
 from game_stats import GameStats
-from button import Button
 from scoreboard import Scoreboard
+from button import Button
 
 
 class Game:
@@ -16,7 +16,6 @@ class Game:
         pygame.init()
         self.settings = Settings()
 
-        # Define tela do jogo
         self.screen = pygame.display.set_mode(
             (self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Invasão Alien")
@@ -34,6 +33,7 @@ class Game:
         pygame.mixer.music.play(-1)
 
         self._create_fleet()
+        self.clock = pygame.time.Clock()
 
         self.play_button = Button(self, "Play")
 
@@ -101,12 +101,6 @@ class Game:
         elif event.key == pygame.K_s:
             self.spacecraft.moving_down = True
 
-        elif event.key == pygame.K_d:
-            self.spacecraft.moving_right = True
-
-        elif event.key == pygame.K_a:
-            self.spacecraft.moving_left = True
-
         elif event.key == pygame.K_SPACE:
             self._fire_bullets()
 
@@ -117,12 +111,6 @@ class Game:
         elif event.key == pygame.K_s:
             self.spacecraft.moving_down = False
 
-        elif event.key == pygame.K_d:
-            self.spacecraft.moving_right = False
-
-        elif event.key == pygame.K_a:
-            self.spacecraft.moving_left = False
-
     def _check_fleet_edges(self):
         for alien in self.aliens.sprites():
             if alien.check_edges():
@@ -131,29 +119,24 @@ class Game:
 
     def _change_fleet_direction(self):
         for alien in self.aliens.sprites():
-            alien.rect.y += self.settings.fleet_drop_speed
+            alien.rect.x -= self.settings.fleet_drop_speed
         self.settings.fleet_direction *= -1
 
     def _create_fleet(self):
+        avaiable_space_x = self.settings.screen_width - (9 * self.settings.alien_width)
+        number_aliens_x = avaiable_space_x // (2 * self.settings.alien_width)
+
+        avaiable_space_y = self.settings.screen_height - (2 * self.settings.alien_height)
+        number_aliens_y = avaiable_space_y // (2 * self.settings.alien_height)
+
+        for alien_row in range(number_aliens_y):
+            for alien_column in range(number_aliens_x):
+                self._create_alien(alien_column, alien_row)
+
+    def _create_alien(self, alien_column, alien_row):
         alien = Alien(self)
-        alien_width, alien_height = alien.rect.size
-        avaiable_space_x = self.settings.screen_width - (2 * alien_width)
-        number_aliens_x = avaiable_space_x // (2 * alien_width)
-
-        spacecraft_height = self.spacecraft.rect.height
-        avaiable_space_y = (self.settings.screen_height - (3 * alien_height) - spacecraft_height)
-        number_rows = avaiable_space_y // (2 * alien_height)
-
-        for row_number in range(number_rows):
-            for alien_number in range(number_aliens_x):
-                self._create_alien(alien_number, row_number)
-
-    def _create_alien(self, alien_number, row_number):
-        alien = Alien(self)
-        alien_width, alien_height = alien.rect.size
-        alien.x = alien_width + 2 * alien_width * alien_number
-        alien.rect.x = alien.x
-        alien.rect.y = alien.rect.height + 2 * alien.rect.height * row_number
+        alien.rect.y = self.settings.alien_height + alien_row * 2 * self.settings.alien_height
+        alien.rect.x = 10 * self.settings.alien_width + alien_column * 2 * self.settings.alien_width
         self.aliens.add(alien)
 
     def _update_aliens(self):
@@ -163,7 +146,7 @@ class Game:
         if pygame.sprite.spritecollideany(self.spacecraft, self.aliens):
             self._spacecraft_hit()
 
-        self._check_aliens_bottom()
+        self._check_aliens_right()
 
     def _spacecraft_hit(self):
         if self.stats.spacecraft_left > 0:
@@ -184,10 +167,10 @@ class Game:
             self.stats.game_active = False
             pygame.mouse.set_visible(True)
 
-    def _check_aliens_bottom(self):
+    def _check_aliens_right(self):
         screen_rect = self.screen.get_rect()
         for alien in self.aliens.sprites():
-            if alien.rect.bottom >= screen_rect.bottom:
+            if alien.rect.right >= screen_rect.right:
                 self._spacecraft_hit()
                 break
 
@@ -201,7 +184,7 @@ class Game:
         self.bullets.update()
 
         for bullet in self.bullets.copy():
-            if bullet.rect.bottom <= 0:
+            if bullet.rect.x >= 800:
                 self.bullets.remove(bullet)
 
         self._check_bullet_alien_collisions()
@@ -219,9 +202,9 @@ class Game:
         if not self.aliens:
             self.bullets.empty()
             self._create_fleet()
+            self.settings.increase_speed()
 
             self.stats.level += 1
-            self.settings.increase_speed()
             self.sb.prep_level()
             self.level_up_sound.play()
 
@@ -239,6 +222,7 @@ class Game:
             self.play_button.draw_button()
 
         pygame.display.flip()
+        self.clock.tick(60)
 
 
 if __name__ == "__main__":

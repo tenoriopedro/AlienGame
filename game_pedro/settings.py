@@ -11,32 +11,32 @@ class Settings:
 
         # Configurações da bala
         self.bullet_speed = None
-        self.bullet_width = 3
-        self.bullet_height = 15
+        self.bullet_width = 15
+        self.bullet_height = 3
         self.bullet_color = (60, 60, 60)
         self.bullets_allowed = 3
 
         # Configurações do Alienigena
         self.alien_width = 50
         self.alien_height = 50
-        self.fleet_drop_speed = 10
+        self.fleet_drop_speed = 20
         self.alien_speed = None
-        self.fleet_direction = None
-        self.alien_points = None
 
         # Velocidade do jogo
         self.speedup_scale = 1.2
 
+        self.alien_points = 50
+
+        self.fleet_direction = None
+
         self.iniatialize_dynamic_settings()
 
     def iniatialize_dynamic_settings(self):
-        self.bullet_speed = 0.5
-        self.alien_speed = 0.2
-        self.spacecraft_speed = 0.4
+        self.bullet_speed = 5
+        self.alien_speed = 2
+        self.spacecraft_speed = 6
 
         self.fleet_direction = 1
-
-        self.alien_points = 50
 
     def increase_speed(self):
         self.spacecraft_speed *= self.speedup_scale

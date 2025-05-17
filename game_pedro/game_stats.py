@@ -1,13 +1,13 @@
 class GameStats:
 
     def __init__(self, game):
+        self.level = None
         self.score = None
         self.spacecraft_left = None
-        self.level = None
         self.settings = game.settings
         self.reset_stats()
 
-        self.game_active = True
+        self.game_active = False
 
         self.high_score = 0
 

@@ -16,15 +16,15 @@ class Bullet(Sprite):
             0, 0, self.settings.bullet_width, self.settings.bullet_height
         )
 
-        self.rect.midtop = game.spacecraft.rect.midtop
+        self.rect.midright = game.spacecraft.rect.midright
 
-        self.y = float(self.rect.y)
+        self.x = float(self.rect.x)
         self.color = self.settings.bullet_color
         self.speed_factor = self.settings.bullet_speed
 
     def update(self):
-        self.y -= self.speed_factor
-        self.rect.y = self.y
+        self.x += self.speed_factor
+        self.rect.x = self.x
 
     def draw_bullet(self):
         """Desenha a projetil na tela"""
