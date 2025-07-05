@@ -1,8 +1,8 @@
 class Settings:
     def __init__(self):
         # Configurações da tela
-        self.screen_width = 600
-        self.screen_height = 800
+        self.screen_width = 800
+        self.screen_height = 600
         self.background_color = (245, 245, 245)
 
         # Configurações da nave
