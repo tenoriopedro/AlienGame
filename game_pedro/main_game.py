@@ -1,6 +1,7 @@
 import pygame
 import sys
 from time import sleep
+from init_db import GameDB
 from spacecraft import Spacecraft
 from settings import Settings
 from bullets import Bullet
@@ -13,6 +14,8 @@ from button import Button
 class Game:
 
     def __init__(self):
+        self.db = GameDB()
+        
         pygame.init()
         self.settings = Settings()
 
