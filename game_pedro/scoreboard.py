@@ -1,6 +1,7 @@
 import pygame.font
 from pygame.sprite import Group
 from spacecraft import Spacecraft
+from init_db import GameDB
 
 
 class Scoreboard:
@@ -18,6 +19,7 @@ class Scoreboard:
         self.screen_rect = self.screen.get_rect()
         self.settings = game.settings
         self.stats = game.stats
+        self.db = GameDB()
 
         self.text_color = (30, 30, 30)
         self.font = pygame.font.SysFont(None, 30)
@@ -45,6 +47,7 @@ class Scoreboard:
         self.level_rect.top = self.score_rect.bottom 
 
     def prep_high_score(self):
+        self.stats.high_score = self.db.get_max_score()
         high_score_str = f'high score: {self.stats.high_score:,}'.replace(',', '.')
         self.high_score_image = self.font.render(
             high_score_str, True, self.text_color, self.settings.background_color)

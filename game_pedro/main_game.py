@@ -11,6 +11,7 @@ from scoreboard import Scoreboard
 from button import Button
 
 
+
 class Game:
 
     def __init__(self):
@@ -39,6 +40,7 @@ class Game:
         self.clock = pygame.time.Clock()
 
         self.play_button = Button(self, "Play")
+        print(self.db.get_max_score())
 
     def run(self):
         """Loop principal do jogo"""
@@ -64,6 +66,10 @@ class Game:
         """Recebe os eventos vindo do teclado"""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+
+                print(self.stats.score)
+                self.db.collect_data(self.stats.score)
+                self.db.close_connection()
                 sys.exit()
 
             elif event.type == pygame.KEYDOWN:
