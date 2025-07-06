@@ -4,9 +4,10 @@ from pathlib import Path
 
 ROOT_IMAGE = Path(__file__).parent / "files" / "image_alien.png"
 
-
+# Module to define the size, image
+# and movement of aliens
 class Alien(Sprite):
-
+    
     def __init__(self, game):
 
         super().__init__()
@@ -15,7 +16,9 @@ class Alien(Sprite):
 
         self.image = pygame.image.load(ROOT_IMAGE)
         self.image = pygame.transform.scale(
-            self.image, (self.settings.alien_width, self.settings.alien_height)
+            self.image, 
+            (self.settings.alien_width, 
+             self.settings.alien_height)
         )
         self.rect = self.image.get_rect()
 

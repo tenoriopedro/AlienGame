@@ -24,12 +24,14 @@ class Scoreboard:
         self.text_color = (30, 30, 30)
         self.font = pygame.font.SysFont(None, 30)
 
+        # Prepare graphic elements
         self.prep_score()
         self.prep_high_score()
         self.prep_level()
         self.prep_spacecraft()
 
     def prep_spacecraft(self):
+        # Displays remaining ships
         self.spacecrafts = Group()
         for spacecraft_number in range(self.stats.spacecraft_left):
             spacecraft = Spacecraft(self.game)
@@ -38,6 +40,7 @@ class Scoreboard:
             self.spacecrafts.add(spacecraft)
 
     def prep_level(self):
+        # Render the level
         level_str = f'Level: {self.stats.level:,}'.replace(',', '.')
         self.level_image = self.font.render(
             level_str, True, self.text_color, self.settings.background_color)
@@ -47,6 +50,7 @@ class Scoreboard:
         self.level_rect.top = self.score_rect.bottom 
 
     def prep_high_score(self):
+        # Render high score
         self.stats.high_score = self.db.get_max_score()
         high_score_str = f'high score: {self.stats.high_score:,}'.replace(',', '.')
         self.high_score_image = self.font.render(
@@ -57,21 +61,27 @@ class Scoreboard:
         self.high_score_rect.top = self.score_rect.top
 
     def prep_score(self):
+        # Renders current score
         score_str = f'score: {self.stats.score}'
         self.score_image = self.font.render(
-            score_str, True, self.text_color, self.settings.background_color)
+            score_str, 
+            True, self.text_color, 
+            self.settings.background_color
+            )
 
         self.score_rect = self.score_image.get_rect()
         self.score_rect.right = self.score_rect.right + 650
         self.score_rect.top = 10
 
     def show_score(self):
+        # Draw all scoring information
         self.screen.blit(self.score_image, self.score_rect)
         self.screen.blit(self.high_score_image, self.high_score_rect)
         self.screen.blit(self.level_image, self.level_rect)
         self.spacecrafts.draw(self.screen)
 
     def check_high_score(self):
+        # Update the record
         if self.stats.score > self.stats.high_score:
             self.stats.high_score = self.stats.score
             self.prep_high_score()

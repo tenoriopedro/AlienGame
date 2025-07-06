@@ -15,14 +15,18 @@ from button import Button
 class Game:
 
     def __init__(self):
+        # Initialize the database
         self.db = GameDB()
         
         pygame.init()
         self.settings = Settings()
 
+        # Set up the game screen
         self.screen = pygame.display.set_mode(
-            (self.settings.screen_width, self.settings.screen_height))
-        pygame.display.set_caption("Invasão Alien")
+            (self.settings.screen_width, 
+             self.settings.screen_height)
+        )
+        pygame.display.set_caption("Alien Invasion")
 
         self.stats = GameStats(self)
         self.sb = Scoreboard(self)
@@ -43,7 +47,7 @@ class Game:
         print(self.db.get_max_score())
 
     def run(self):
-        """Loop principal do jogo"""
+        """ Main game loop """
         while True:
             self._check_events()
 
@@ -56,18 +60,18 @@ class Game:
 
     def _game_sounds(self):
 
-        # Sons de ação do jogo
+        # Load all sounds effects
         self.alien_hit_sound = pygame.mixer.Sound('sounds/alien_hit.wav')
         self.spacecraft_hit_sound = pygame.mixer.Sound('sounds/spacecraft_hit.wav')
         self.bullet_shoot_sound = pygame.mixer.Sound('sounds/spacecraft_shoot.wav')
         self.level_up_sound = pygame.mixer.Sound('sounds/level_up.mp3')
 
     def _check_events(self):
-        """Recebe os eventos vindo do teclado"""
+        """ Handle keyboard, mouse, and quit events """
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
 
-                print(self.stats.score)
+                # Save the score in database before quit the game
                 self.db.collect_data(self.stats.score)
                 self.db.close_connection()
                 sys.exit()
@@ -132,6 +136,7 @@ class Game:
         self.settings.fleet_direction *= -1
 
     def _create_fleet(self):
+        # Create a full fleet of aliens.
         avaiable_space_x = self.settings.screen_width - (9 * self.settings.alien_width)
         number_aliens_x = avaiable_space_x // (2 * self.settings.alien_width)
 
@@ -154,6 +159,7 @@ class Game:
 
         if pygame.sprite.spritecollideany(self.spacecraft, self.aliens):
             self._spacecraft_hit()
+
 
         self._check_aliens_right()
 

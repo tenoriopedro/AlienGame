@@ -3,7 +3,7 @@ from pygame.sprite import Sprite
 
 
 class Bullet(Sprite):
-    """Classe para os disparos da nave espacial"""
+    """ Class for spaceship shoots """
 
     def __init__(self, game):
         super().__init__()
@@ -23,9 +23,10 @@ class Bullet(Sprite):
         self.speed_factor = self.settings.bullet_speed
 
     def update(self):
+        # Moves the bullet horizontally
         self.x += self.speed_factor
         self.rect.x = self.x
 
     def draw_bullet(self):
-        """Desenha a projetil na tela"""
+        """ Draw the projectile on the screen """
         pygame.draw.rect(self.screen, self.color, self.rect)

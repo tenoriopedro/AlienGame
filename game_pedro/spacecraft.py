@@ -6,7 +6,7 @@ IMAGE_SPACECRAFT = Path(__file__).parent / "files" / "spacecraft.png"
 
 
 class Spacecraft(Sprite):
-    """Classe para gerenciar a espaço nave"""
+    """ Class to manage the spaceship """
 
     def __init__(self, game):
         super().__init__()
@@ -14,23 +14,24 @@ class Spacecraft(Sprite):
         self.settings = game.settings
         self.screen_rect = game.screen.get_rect()
 
-        # Carregando a imagem da nave
+        # Load ship image
         self.image = pygame.image.load(IMAGE_SPACECRAFT)
         self.image = pygame.transform.scale(
-            self.image, (40, 40)
+            self.image, 
+            (40, 40)
         )
         self.image = pygame.transform.rotate(self.image, 270)
         self.rect = self.image.get_rect()
 
-        # Posicionando a nave na tela do jogo
+        # Positioning the ship on the game screen
         self.rect.midleft = self.screen_rect.midleft
-
         self.y = float(self.rect.y)
 
         self.moving_up = False
         self.moving_down = False
 
     def update(self):
+        # Moving the ship vertically
         if self.moving_up and self.rect.top > 41:
             self.y -= self.settings.spacecraft_speed
         if self.moving_down and self.rect.bottom < self.screen_rect.bottom:
