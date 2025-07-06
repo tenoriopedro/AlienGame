@@ -27,7 +27,7 @@ Before cloning and running the game, follow these **essential steps**:
   DB_USER=your_mysql_user
   DB_PASSWORD=your_mysql_password
 
-    ✅ If you're using the default MySQL root user, just make sure the password matches the one you used when installing MySQL.
+✅ If you're using the default MySQL root user, just make sure the password matches the one you used when installing MySQL.
 
 ### 2. (Optional) Create a non-root MySQL user
 
