@@ -65,7 +65,7 @@ pip install -r requirements.txt
 Before running the game, follow these **essential steps**:
   
 
-### 1. Create the `.env` file
+### 1. Create the `.env` file and edit the `CHANGE` values ​​as you wish
   
 
 - In the root of the project, **duplicate** the `.env-example` file and **rename it** to `.env`.
@@ -103,14 +103,17 @@ mysql -u root -p
 
 
 ### Then run these commands one at a time:
+
+
+- Replace the values ​​below according to your `.env` file
   
 
 ```sql
 
-CREATE USER IF NOT EXISTS 'your_user'@'localhost' IDENTIFIED BY 'your_password';
+CREATE USER IF NOT EXISTS 'db_user'@'localhost' IDENTIFIED BY 'db_password';
 
   
-GRANT ALL PRIVILEGES ON *.* TO 'your_user'@'localhost';
+GRANT ALL PRIVILEGES ON *.* TO 'db_user'@'localhost';
 
 
 FLUSH PRIVILEGES;
@@ -118,8 +121,6 @@ FLUSH PRIVILEGES;
 \q
 
 ```
-
-### Replace `your_user` and `your_password` with values from your `.env` file.
 
 
 ---
