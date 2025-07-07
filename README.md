@@ -3,14 +3,10 @@
 This is a classic **2D arcade-style shooter game** developed in Python using **Pygame**. The game is based on the project in _Python Crash Course_ by **Eric Matthes** — but with an upgrade: **MySQL database integration** to store and retrieve high scores! 🏆
 
   
-
 ---
-
-  
 
 ## 🎮 Gameplay
 
-  
 
 - You control a **spaceship** on the **left side of the screen**.
 
@@ -25,21 +21,16 @@ This is a classic **2D arcade-style shooter game** developed in Python using **P
 - Your score is saved to a **MySQL database**, and the **highest score** is always displayed.
 
   
-
 ---
 
-  
 
 ## 📂 Project Setup Instructions (Important!)
-
   
 
 Before cloning and running the game, follow these **essential steps**:
-
   
 
 ### 1. Create the `.env` file
-
   
 
 - In the root of the project, **duplicate** the `.env-example` file and **rename it** to `.env`.
@@ -58,14 +49,12 @@ DB_PASSWORD=your_mysql_password
 
   
 
-### 2. (Optional) Create a non-root MySQL user
+### 2. (Recommended) Create a non-root MySQL user
 
-  
 
 - If you don’t want to use `root`, follow these steps to create a custom user and grant it privileges:
 
   
-
 ### Open MySQL prompt:
 
 ```prompt
@@ -74,9 +63,7 @@ mysql -u root -p
 ```
 
 
-
 ### Then run these commands one at a time:
-
   
 
 ```sql
@@ -84,45 +71,35 @@ mysql -u root -p
 CREATE USER IF NOT EXISTS 'your_user'@'localhost' IDENTIFIED BY 'your_password';
 
   
-
 GRANT ALL PRIVILEGES ON *.* TO 'your_user'@'localhost';
 
-  
 
 FLUSH PRIVILEGES;
 
-  ```
+```
 
 ### Replace `your_user` and `your_password` with values from your `.env` file.
-
   
 
 ## 🧰 Features
-
   
 
 - 👾 Alien waves increase in difficulty.
 
-  
 
 - 🔫 Bullet shooting and collision logic.
-
   
 
 - 🛸 Vertical ship movement from top to bottom (left corner).
-
   
 
 - 💾 High scores saved in a MySQL database.
-
   
 
 - 🎓 Clean, modular, object-oriented Python code.
-
   
 
 ## 🛠️ Installation
-
   
 
 ### 1. Clone the repository:
@@ -132,7 +109,6 @@ FLUSH PRIVILEGES;
 git clone https://github.com/tenoriopedro/PersonalProjects.git
 ```
   
-
 ### 2. Install dependencies:
 
   
@@ -143,7 +119,6 @@ pip install -r requirements.txt
 
 Make shure the `.env` file is configured correctly.
 
-  
 
 ## ▶️ How to Play
 
@@ -154,39 +129,29 @@ python main_game.py
   
 
 ### Controls:
-
   
 
 - W - Move Up
-
   
 
 - S - Move Down
-
   
 
 - SPACE - Shoot
-
   
 
 ## 🧠 Based On
-
   
 
 This game is based on the project in Chapters 12–14 of the book Python Crash Course by Eric Matthes. The MySQL integration is a custom extension.
 
   
-  
-
 👨‍💻 Author
 
 Pedro Tenório
-
-  
   
 
 ## 📃 License
 
-  
 
 This project is licensed under the MIT License.
