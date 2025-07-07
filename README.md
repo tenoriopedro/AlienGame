@@ -31,6 +31,8 @@ This is a classic **2D arcade-style shooter game** developed in Python using **P
   
 ```bash
 git clone https://github.com/tenoriopedro/AlienGame.git
+
+cd AlienGame
 ```
   
 ### 2. Install dependencies:
