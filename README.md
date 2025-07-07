@@ -147,7 +147,7 @@ FLUSH PRIVILEGES;
 
   
 
-Before running the project make shure the `.env` file is configured correctly.
+## Before running the project make shure the `.env` file is configured correctly.
 
 
 ---
