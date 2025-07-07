@@ -23,11 +23,11 @@ Before cloning and running the game, follow these **essential steps**:
 
 - In the root of the project, **duplicate** the `.env-example` file and **rename it** to `.env`.
 - Edit the `.env` file and set your MySQL username and password:
-  ```env
+  ```env```
   DB_USER=your_mysql_user
   DB_PASSWORD=your_mysql_password
 
-✅ If you're using the default MySQL root user, just make sure the password matches the one you used when installing MySQL.
+✅ If you're using the default MySQL `root` user, just make sure the password matches the one you used when installing MySQL.
 
 ### 2. (Optional) Create a non-root MySQL user
 
@@ -35,33 +35,35 @@ If you don’t want to use root, follow these steps to create a custom user and 
 
 ## Open MySQL prompt:
 
-mysql -u root -p
+  ```prompt```
+    mysql -u root -p
 
 ### Then run these commands one at a time:
 
-CREATE USER IF NOT EXISTS 'your_user'@'localhost' IDENTIFIED BY 'your_password';
+  ```sql
+    CREATE USER IF NOT EXISTS 'your_user'@'localhost' IDENTIFIED BY 'your_password';
 
-GRANT ALL PRIVILEGES ON *.* TO 'your_user'@'localhost';
+    GRANT ALL PRIVILEGES ON *.* TO 'your_user'@'localhost';
 
-FLUSH PRIVILEGES;
+    FLUSH PRIVILEGES;
 
-### Replace your_user and your_password with values from your .env file.
+### Replace `your_user` and your_password with values from your .env file.
 
 ## 🧰 Features
 
-    👾 Alien waves increase in difficulty.
+👾 Alien waves increase in difficulty.
 
-    🔫 Bullet shooting and collision logic.
+🔫 Bullet shooting and collision logic.
 
-    🛸 Vertical ship movement from top to bottom (left corner).
+🛸 Vertical ship movement from top to bottom (left corner).
 
-    💾 High scores saved in a MySQL database.
+💾 High scores saved in a MySQL database.
 
-    🎓 Clean, modular, object-oriented Python code.
+🎓 Clean, modular, object-oriented Python code.
 
 ## 🛠️ Installation
 
-   ### Clone the repository:
+### Clone the repository:
 
 git clone https://github.com/tenoriopedro/PersonalProjects.git
 
