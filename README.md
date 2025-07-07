@@ -1,3 +1,5 @@
+# 🚀 Alien Invasion (Python Game with MySQL Integration)
+
 This is a classic **2D arcade-style shooter game** developed in Python using **Pygame**. The game is based on the project in _Python Crash Course_ by **Eric Matthes** — but with an upgrade: **MySQL database integration** to store and retrieve high scores! 🏆
 
   
