@@ -79,7 +79,10 @@ FLUSH PRIVILEGES;
 ```
 
 ### Replace `your_user` and `your_password` with values from your `.env` file.
-  
+
+
+---
+
 
 ## 🧰 Features
   
@@ -97,7 +100,10 @@ FLUSH PRIVILEGES;
   
 
 - 🎓 Clean, modular, object-oriented Python code.
-  
+
+
+---
+
 
 ## 🛠️ Installation
   
@@ -120,6 +126,9 @@ pip install -r requirements.txt
 Make shure the `.env` file is configured correctly.
 
 
+---
+
+
 ## ▶️ How to Play
 
   
@@ -140,16 +149,25 @@ python main_game.py
 - SPACE - Shoot
   
 
+---
+
+
 ## 🧠 Based On
   
 
 This game is based on the project in Chapters 12–14 of the book Python Crash Course by Eric Matthes. The MySQL integration is a custom extension.
 
-  
+
+---  
+
+
 👨‍💻 Author
 
 Pedro Tenório
   
+
+---
+
 
 ## 📃 License
 
