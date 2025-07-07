@@ -23,7 +23,7 @@ Before cloning and running the game, follow these **essential steps**:
 
 - In the root of the project, **duplicate** the `.env-example` file and **rename it** to `.env`.
 - Edit the `.env` file and set your MySQL username and password:
-  ```env```
+  ```env
   DB_USER=your_mysql_user
   DB_PASSWORD=your_mysql_password
 
@@ -35,7 +35,7 @@ If you don’t want to use root, follow these steps to create a custom user and 
 
 ## Open MySQL prompt:
 
-  ```prompt```
+  ```prompt
     mysql -u root -p
 
 ### Then run these commands one at a time:
