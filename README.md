@@ -23,11 +23,28 @@ This is a classic **2D arcade-style shooter game** developed in Python using **P
   
 ---
 
+## 🛠️ Installation
+  
+
+### 1. Clone the repository:
+
+  
+```bash
+git clone https://github.com/tenoriopedro/PersonalProjects.git
+```
+  
+### 2. Install dependencies:
+
+  
+```bash
+pip install -r requirements.txt
+```
+
 
 ## 📂 Project Setup Instructions (Important!)
   
 
-Before cloning and running the game, follow these **essential steps**:
+Before running the game, follow these **essential steps**:
   
 
 ### 1. Create the `.env` file
@@ -104,26 +121,9 @@ FLUSH PRIVILEGES;
 
 ---
 
-
-## 🛠️ Installation
   
 
-### 1. Clone the repository:
-
-  
-```bash
-git clone https://github.com/tenoriopedro/PersonalProjects.git
-```
-  
-### 2. Install dependencies:
-
-  
-```bash
-pip install -r requirements.txt
-```
-  
-
-Make shure the `.env` file is configured correctly.
+Before running the project make shure the `.env` file is configured correctly.
 
 
 ---
