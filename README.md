@@ -25,19 +25,7 @@ This is a classic **2D arcade-style shooter game** developed in Python using **P
 
 ## 🛠️ Installation
 
-
-### 1. First of all make the virtual environment:
-
-
-
-```bash
-
-python -m venv venv
-
-```
-
-
-### 2. Clone the repository:
+### 1. Clone the repository:
 
   
 ```bash
@@ -47,6 +35,19 @@ git clone https://github.com/tenoriopedro/AlienGame.git
 cd AlienGame
 
 ```
+
+
+### 2. Make the virtual environment and activate it:
+
+
+```bash
+
+python -m venv venv
+
+.\venv\Scripts\activate.ps1
+
+```
+
   
 ### 3. Install dependencies:
 
@@ -69,6 +70,9 @@ Before running the game, follow these **essential steps**:
 
 - In the root of the project, **duplicate** the `.env-example` file and **rename it** to `.env`.
 
+
+### 2. Using MySQL root.
+
 - Edit the `.env` file and set your MySQL username and password:
 
 ```env
@@ -79,11 +83,11 @@ DB_PASSWORD=your_mysql_password
 
 ```
 
-✅ If you're using the default MySQL `root` user, just make sure the password matches the one you used when installing MySQL.
+✅ If you're using the default MySQL `root` user, just make sure the password matches the one you used when installing MySQL. If everything is really ok with the `.env` file you can skip step 3.
 
   
 
-### 2. (Recommended) Create a non-root MySQL user
+### 3. (Recommended) Create a non-root MySQL user
 
 
 - If you don’t want to use `root`, follow these steps to create a custom user and grant it privileges:
@@ -110,6 +114,8 @@ GRANT ALL PRIVILEGES ON *.* TO 'your_user'@'localhost';
 
 
 FLUSH PRIVILEGES;
+
+\q
 
 ```
 
