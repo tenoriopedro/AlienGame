@@ -24,22 +24,37 @@ This is a classic **2D arcade-style shooter game** developed in Python using **P
 ---
 
 ## 🛠️ Installation
-  
 
-### 1. Clone the repository:
+
+### 1. First of all make the virtual environment:
+
+
+
+```bash
+
+python -m venv venv
+
+```
+
+
+### 2. Clone the repository:
 
   
 ```bash
+
 git clone https://github.com/tenoriopedro/AlienGame.git
 
 cd AlienGame
+
 ```
   
-### 2. Install dependencies:
+### 3. Install dependencies:
 
   
 ```bash
+
 pip install -r requirements.txt
+
 ```
 
 
@@ -79,6 +94,7 @@ DB_PASSWORD=your_mysql_password
 ```prompt
 
 mysql -u root -p
+
 ```
 
 
@@ -135,7 +151,9 @@ Before running the project make shure the `.env` file is configured correctly.
 
   
 ```shell
+
 python main_game.py
+
 ```
   
 
